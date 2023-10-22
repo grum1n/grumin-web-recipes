@@ -5,7 +5,6 @@ $page_title = 'HOME';
 
 ?>
 
-
 <?php include(ROOT_PATH . '/views/includes/public/header.php'); ?>
 
 <?php include(ROOT_PATH . '/views/includes/public/hero.php'); ?>
