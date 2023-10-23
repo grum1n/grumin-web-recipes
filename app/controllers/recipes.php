@@ -1,6 +1,7 @@
 <?php
 
 include(ROOT_PATH . "/app/server/db.php");
+include(ROOT_PATH . "/app/helpers/middleware.php");
 include(ROOT_PATH . "/app/helpers/validateRecipe.php");
 
 $errors = array();
@@ -37,14 +38,11 @@ if (isset($_GET['id'])) {
 }
 
 if(isset($_POST['add-recipe'])){
+    adminOnly();
     $errors = validateRecipe($_POST);
-    //  dd($_FILES['image']['name']);
-
     if(!empty($_FILES['image']['name'])){
-
         $image_name = time() . '_' . $_FILES['image']['name'];
         $destination = ROOT_PATH . '/assets/images/uploads/' . $image_name;
-
         $result = move_uploaded_file($_FILES['image']['tmp_name'], $destination);
 
         if($result){
@@ -59,7 +57,7 @@ if(isset($_POST['add-recipe'])){
     if (count($errors) === 0) {
         unset($_POST['add-recipe']);
 
-        // $_POST['user_id'] = $_SESSION['id'];
+        $_POST['user_id'] = $_SESSION['id'];
         $_POST['published'] = isset($_POST['published']) ? 1 : 0;
         $_POST['description'] = htmlentities($_POST['description']);
         $recipe_id = create($table, $_POST);
@@ -82,7 +80,7 @@ if(isset($_POST['add-recipe'])){
 }
 
 if (isset($_GET['del_recipe_id'])) {
-    // adminOnly();
+    adminOnly();
     $count = delete($table, $_GET['del_recipe_id']);
     $_SESSION['message'] = 'Recipe deleted successfuly.';
     $_SESSION['type'] = 'alert-success';
@@ -91,13 +89,11 @@ if (isset($_GET['del_recipe_id'])) {
 }
 
 if(isset($_POST['update-recipe'])){
+    adminOnly();
     $errors = validateRecipe($_POST);
-    // dd($_POST);
-
     if(!empty($_FILES['image']['name'])){
         $image_name = time() . '_' . $_FILES['image']['name'];
         $destination = ROOT_PATH . '/assets/images/uploads/' . $image_name;
-
         $result = move_uploaded_file($_FILES['image']['tmp_name'], $destination);
 
         if($result){
@@ -113,14 +109,14 @@ if(isset($_POST['update-recipe'])){
     if(count($errors) == 0){
         $id = $_POST['id'];
         unset($_POST['update-recipe'], $_POST['id']);
-        // dd($_POST);
-        // $_POST['user_id'] = $_SESSION['id'];
+
+        $_POST['user_id'] = $_SESSION['id'];
         $_POST['published'] = isset($_POST['published']) ? 1 : 0;
         $_POST['description'] = htmlentities($_POST['description']);
-
         $recipe_id = update($table, $id, $_POST);
         $_SESSION['message'] = 'Recipe updated successfuly.';
         $_SESSION['type'] = 'alert-success';
+        
         header('location: ' . BASE_URL . '/views/authorized/recipes/index.php');
         exit();
     }else {

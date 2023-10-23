@@ -1,9 +1,9 @@
 <?php 
 include('../../../path.php'); 
 include(ROOT_PATH . '/app/controllers/categories.php');
+adminOnly();
 
 $page_title = 'Categories | DASHBOARD';
-
 ?>
 
 <?php include(ROOT_PATH . '/views/includes/authorized/header.php'); ?>

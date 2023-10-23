@@ -1,6 +1,7 @@
 <?php
 
 include(ROOT_PATH . "/app/server/db.php");
+include(ROOT_PATH . "/app/helpers/middleware.php");
 include(ROOT_PATH . "/app/helpers/validateCategory.php");
 
 $errors = array();
@@ -12,9 +13,11 @@ $description = '';
 $categories = selectAll($table);
 
 if(isset($_POST['add-category'])){
+    adminOnly();
     $errors = validateCategory($_POST);
     if (count($errors) === 0) {
         unset($_POST['add-category']);
+
         $topic_id = create($table, $_POST);
         $_SESSION['message'] = 'Category created successfully';
         $_SESSION['type'] = 'alert-success';
@@ -36,9 +39,10 @@ if (isset($_GET['id'])) {
 }
 
 if (isset($_GET['del_id'])) {
+    adminOnly();
     $id = $_GET['del_id'];
-    $count = delete($table, $id);
 
+    $count = delete($table, $id);
     $_SESSION['message'] = 'Category id: ' . $id . ' deleted successfully !';
     $_SESSION['type'] = 'alert-success';
 
@@ -47,13 +51,14 @@ if (isset($_GET['del_id'])) {
 }
 
 if (isset($_POST['update-category'])) {
+    adminOnly();
     $errors = validateCategory($_POST);
 
     if (count($errors) === 0) {
         $id = $_POST['id'];
         unset($_POST['update-category'], $_POST['id']);
+
         $topic_id = update($table, $id, $_POST);
-    
         $_SESSION['message'] = 'Category updated successfully';
         $_SESSION['type'] = 'alert-success';
     

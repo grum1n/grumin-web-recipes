@@ -1,6 +1,7 @@
 <?php 
 include('../../../path.php'); 
 include(ROOT_PATH . '/app/controllers/categories.php');
+adminOnly();
 
 $page_title = 'Categories - Edit | DASHBOARD';
 ?>
@@ -14,7 +15,7 @@ $page_title = 'Categories - Edit | DASHBOARD';
         <form action="edit.php" method="POST" class="form contact-form">
             <input type="hidden" name="id" value="<?php echo $id; ?>">
             <div class="form-row">
-                <label html="name" class="form-label">Name</label>
+                <label html="name" class="form-label">Category Name</label>
                 <input type="text" name="name" id="name" class="form-input" value="<?php echo $name; ?>" />
             </div>
             <div class="form-row">

@@ -1,9 +1,9 @@
 <?php 
 include('../../../path.php'); 
 include(ROOT_PATH . '/app/controllers/recipes.php');
+adminOnly();
 
 $page_title = 'Recipes | DASHBOARD';
-
 ?>
 
 <?php include(ROOT_PATH . '/views/includes/authorized/header.php'); ?>

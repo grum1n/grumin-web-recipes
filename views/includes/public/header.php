@@ -11,28 +11,37 @@
 
 <body>
 
-<header>
-      <nav>
-        <div class="header-nav">
-          <a href="<?php echo BASE_URL . '/index.php'; ?>" class="nav-logo">
-            GRUMINRecipes
-          </a>
-          <button class="nav-btn btn">
-            <i class="fas fa-align-justify"></i>
-          </button>
-        </div>
-        <div class="nav-links">
-          <a href="<?php echo BASE_URL . '/index.php'; ?>" class="nav-link"> home </a>
-          <a href="<?php echo BASE_URL . '/views/public/about.php'; ?>" class="nav-link"> about </a>
-          <a href="<?php echo BASE_URL . '/views/public/tags.php'; ?>" class="nav-link"> tags </a>
-          <a href="<?php echo BASE_URL . '/views/public/recipes.php'; ?>" class="nav-link"> recipes </a>
-          <a href="<?php echo BASE_URL . '/views/public/contact.php'; ?>" class="nav-link"> contact </a>
+    <header>
+        <nav>
+            <div class="header-nav">
+                <a href="<?php echo BASE_URL . '/index.php'; ?>" class="nav-logo">
+                    GRUMINrecipes
+                </a>
+                <button class="nav-btn btn">
+                    <i class="fas fa-align-justify"></i>
+                </button>
+            </div>
+            <div class="nav-links">
+                <a href="<?php echo BASE_URL . '/index.php'; ?>" class="nav-link"> home </a>
+                <a href="<?php echo BASE_URL . '/views/public/about.php'; ?>" class="nav-link"> about </a>
+                <a href="<?php echo BASE_URL . '/views/public/tags.php'; ?>" class="nav-link"> tags </a>
+                <a href="<?php echo BASE_URL . '/views/public/recipes.php'; ?>" class="nav-link"> recipes </a>
+                <a href="<?php echo BASE_URL . '/views/public/contact.php'; ?>" class="nav-link"> contact </a>
 
-          <div class="nav-link login-link">
-            <a href="<?php echo BASE_URL . '/views/public/login.php'; ?>" class="btn"> login </a>
-            <a href="<?php echo BASE_URL . '/views/public/signup.php'; ?>" class="btn"> sign up </a>
-          </div>
-        </div>
-      </nav>
-</header>
-
+                <?php if ((isset($_SESSION['id']))) : ?>
+                    <div class="nav-link login-link">
+                        <?php echo $_SESSION['username']; ?>
+                        <?php if ($_SESSION['admin']) : ?>
+                            <li><a href="<?php echo BASE_URL . '/views/authorized/dashboard.php' ?>">Dashboard</a></li>
+                        <?php endif; ?>
+                        <a href="<?php echo BASE_URL . '/logout.php' ?>" class="logout">logout</a>
+                    </div>
+                    <?php else : ?>
+                    <div class="nav-link login-link">
+                        <a href="<?php echo BASE_URL . '/views/public/login.php'; ?>" class="btn"> login </a>
+                        <a href="<?php echo BASE_URL . '/views/public/signup.php'; ?>" class="btn"> sign up </a>
+                    </div>
+                <?php endif; ?>
+            </div>
+        </nav>
+    </header>

@@ -11,28 +11,32 @@
 
 <body>
 
-<header class="dashboard-header">
-      <nav>
-        <div class="header-nav">
-          <a href="<?php echo BASE_URL . '/views/authorized/dashboard.php'; ?>" class="nav-logo">
-            GRUMINRecipes
-          </a>
-          <button class="nav-btn btn">
-            <i class="fas fa-align-justify"></i>
-          </button>
-        </div>
-        <div class="nav-links">
-          <a href="<?php echo BASE_URL . '/index.php'; ?>"  target="_blank" class="nav-link"> home </a>
-          <a href="<?php echo BASE_URL . '/views/authorized/categories/index.php'; ?>" class="nav-link"> categories </a>
-          <a href="<?php echo BASE_URL . '/views/authorized/recipes/index.php'; ?>" class="nav-link"> recipes </a>
+    <header class="dashboard-header">
+        <nav>
+            <div class="header-nav">
+                <a href="<?php echo BASE_URL . '/views/authorized/dashboard.php'; ?>" class="nav-logo">
+                    GRUMINrecipes
+                </a>
+                <button class="nav-btn btn">
+                    <i class="fas fa-align-justify"></i>
+                </button>
+            </div>
+            <?php if (isset($_SESSION['username'])) : ?>
+                <div class="nav-links">
+                    <a href="<?php echo BASE_URL . '/index.php'; ?>" class="nav-link"> home </a>
+                    <a href="<?php echo BASE_URL . '/views/authorized/categories/index.php'; ?>" class="nav-link"> categories </a>
+                    <a href="<?php echo BASE_URL . '/views/authorized/recipes/index.php'; ?>" class="nav-link"> recipes </a>
 
-          <div class="nav-link login-link">
-            <a href="<?php echo BASE_URL . '/index.php'; ?>" class="btn"> logout</a>
-          </div>
-        </div>
-      </nav>
-</header>
+                    <span class="alert-success"> <?php echo $_SESSION['username']; ?></span>
 
-<main>
-    <section class="recipes-container">
-        <?php include(ROOT_PATH . '/views/includes/authorized/sidebar.php'); ?>
+                    <div class="nav-link login-link">
+                        <a href="<?php echo BASE_URL . '/logout.php'; ?>" class="btn"> logout</a>
+                    </div>
+                </div>
+            <?php endif; ?>
+        </nav>
+    </header>
+
+    <main>
+        <section class="recipes-container">
+            <?php include(ROOT_PATH . '/views/includes/authorized/sidebar.php'); ?>

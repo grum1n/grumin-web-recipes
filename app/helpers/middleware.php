@@ -1,0 +1,19 @@
+<?php
+
+function adminOnly($redirect = '/index.php')
+{
+    if(empty($_SESSION['id']) || empty($_SESSION['admin'])){
+        $_SESSION['message'] = 'You are not authorized';
+        $_SESSION['type'] = 'alert-danger';
+        header('location: ' . BASE_URL . $redirect);
+        exit();
+    }
+}
+
+function guestsOnly($redirect = '/index.php')
+{
+    if(isset($_SESSION['id'])){
+        header('location: ' . BASE_URL . $redirect);
+        exit();
+    }
+}

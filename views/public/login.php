@@ -1,5 +1,7 @@
 <?php 
     include('../../path.php'); 
+    include(ROOT_PATH . '/app/controllers/users.php');
+    guestsOnly();
 
     $page_title = 'LOGIN';
 ?>
@@ -9,19 +11,22 @@
 <main>
     <section class="contact-container">
         <article>
-            <form class="form contact-form">
+            <?php include(ROOT_PATH . '/app/helpers/formErrors.php') ?>
+            <form action="login.php" method="POST" class="form contact-form">
+
                 <div class="form-row">
-                <label html="email" class="form-label">email</label>
-                <input type="email" name="email" id="email" class="form-input" />
+                    <label for="username" value="<?php echo $username; ?>" class="form-label">Username</label>
+                    <input type="text" name="username" id="username" class="form-input" />
                 </div>
+
                 <div class="form-row">
-                <label html="password" class="form-label">password</label>
-                <input type="password" name="password" id="password" class="form-input" />
+                    <label for="password" value="<?php echo $password; ?>" class="form-label">Password</label>
+                    <input type="password" name="password" id="password" class="form-input" />
                 </div>
-                <!-- <button type="submit" class="btn btn-block">
-                Sign IN
-                </button> -->
-                <a href="<?php echo BASE_URL . '/views/authorized/dashboard.php'; ?>">login</a>
+
+                <button type="submit" name="login-btn" class="btn btn-block">
+                    Sign IN
+                </button>
             </form>
         </article>
     </section>

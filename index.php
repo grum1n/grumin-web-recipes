@@ -1,5 +1,6 @@
 <?php 
 include('path.php'); 
+include(ROOT_PATH . "/app/controllers/recipes.php");
 
 $page_title = 'HOME';
 
@@ -10,6 +11,7 @@ $page_title = 'HOME';
 <?php include(ROOT_PATH . '/views/includes/public/hero.php'); ?>
 
 <main>
+    <?php include(ROOT_PATH . '/views/includes/authorized/messages.php'); ?>
     <section class="recipes-container">
         <aside>
             <h4>recipes</h4>

@@ -16,8 +16,8 @@ function executeQuery($sql, $data)
     $stmt = $conn->prepare($sql);
     $values = array_values($data);
     $types = str_repeat('s', count($values));
-    // $stmt->bind_param($conditions, 'is'); // is - is a type,  i as integer, s - as string // tutorial 7
-    $stmt->bind_param($types, ...$values);  // spread operator  / apdate to version php 7
+    // $stmt->bind_param($conditions, 'is'); // is - is a type,  i as integer, s - as string 
+    $stmt->bind_param($types, ...$values);  // spread operator  / updated to version php 7
     $stmt->execute();
     return $stmt;
 }
@@ -34,7 +34,7 @@ function selectAll($table, $conditions = [])
         return $records;
     } else {
         // return records that match conditions...
-        // $sql = "SELECT * FROM $table WHERE username='grumin' AND admin=1";
+        // $sql = "SELECT * FROM $table WHERE username='John' AND admin=1";
         $i = 0;
         foreach ($conditions as $key => $value) {
             if ($i === 0) {
@@ -46,12 +46,7 @@ function selectAll($table, $conditions = [])
             }
             $i++;
         }
-
-        // $stmt = $conn->prepare($sql);
-        // $values = array_values($conditions);
-        // $types = str_repeat('s', count($values));
-        // $stmt->bind_param($types, ...$values);
-        // $stmt->execute();
+       
         $stmt = executeQuery($sql, $conditions);
         $records = $stmt->get_result()->fetch_all(MYSQLI_ASSOC); //fetch all
         return $records;
@@ -74,14 +69,8 @@ function selectOne($table, $conditions)
         $i++;
     }
 
-    // $sql = "SELECT * FROM $table WHERE username='grumin' AND admin=1 LIMIT 1";
+    // $sql = "SELECT * FROM $table WHERE username='John' AND admin=1 LIMIT 1";
     $sql = $sql . " LIMIT 1";
-
-    // $stmt = $conn->prepare($sql);
-    // $values = array_values($conditions);
-    // $types = str_repeat('s', count($values));
-    // $stmt->bind_param($types, ...$values);
-    // $stmt->execute();
     $stmt = executeQuery($sql, $conditions);
     $records = $stmt->get_result()->fetch_assoc(); // return just particular record
     return $records;
@@ -104,8 +93,6 @@ function create($table, $data)
         }
         $i++;
     }
-    // dd($sql);
-
     $stmt = executeQuery($sql, $data);
     $id = $stmt->insert_id;
     return $id;
@@ -113,10 +100,6 @@ function create($table, $data)
 
 function update($table, $id, $data)
 {
-
-    //tutorial
-    //https://www.youtube.com/watch?v=DRbH9yXQJ1Q&list=PL3pyLl-dgiqD0eKYJ-XSxrHaRh-zsA2tP&index=10
-    //How to create a blog PHP and MySQL database #10 | Delete and update functions
 
     global $conn;
     // $sql = "UPDATE users SET username=?, admin=?, email=?, password=? WHERE id=?";
@@ -141,10 +124,7 @@ function update($table, $id, $data)
 
 function delete($table, $id)
 {
-
     global $conn;
-    // $sql = "DELETE FROM users WHERE id=?";
-
     $sql = "DELETE FROM $table WHERE id=?";
 
     $stmt = executeQuery($sql, ['id' => $id]);

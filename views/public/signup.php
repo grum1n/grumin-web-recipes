@@ -1,5 +1,6 @@
 <?php 
     include('../../path.php'); 
+    include(ROOT_PATH . '/app/controllers/users.php');
 
     $page_title = 'SIGN UP';
 ?>
@@ -9,20 +10,31 @@
 <main>
     <section class="contact-container">
         <article>
-            <form class="form contact-form">
+            <?php include(ROOT_PATH . '/app/helpers/formErrors.php') ?>
+           
+            <form action="signup.php" method="POST" class="form contact-form" >
+
                 <div class="form-row">
-                <label html="name" class="form-label">name</label>
-                <input type="text" name="name" id="name" class="form-input" />
+                    <label for="username" class="form-label">Name</label>
+                    <input type="text" name="username" id="username" value="<?php echo $username; ?>" class="form-input" />
                 </div>
+
                 <div class="form-row">
-                <label html="email" class="form-label">email</label>
-                <input type="email" name="email" id="email" class="form-input" />
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" name="email" id="email" value="<?php echo $email; ?>" class="form-input" />
                 </div>
+
                 <div class="form-row">
-                <label html="password" class="form-label">password</label>
-                <input type="password" name="password" id="password" class="form-input" />
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" name="password" id="password" value="<?php echo $password; ?>" class="form-input" />
                 </div>
-                <button type="submit" class="btn btn-block">
+
+                <div class="form-row">
+                    <label for="passwordConf" class="form-label">Confirm Password</label>
+                    <input type="password" name="passwordConf" id="passwordConf" value="<?php echo $passwordConf; ?>" class="form-input" />
+                </div>
+
+                <button type="submit" name="register-btn" class="btn btn-block">
                     Register
                 </button>
             </form>
