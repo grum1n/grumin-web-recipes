@@ -24,6 +24,7 @@
         <div class="nav-links">
           <a href="<?php echo BASE_URL . '/index.php'; ?>"  target="_blank" class="nav-link"> home </a>
           <a href="<?php echo BASE_URL . '/views/authorized/categories/index.php'; ?>" class="nav-link"> categories </a>
+          <a href="<?php echo BASE_URL . '/views/authorized/recipes/index.php'; ?>" class="nav-link"> recipes </a>
 
           <div class="nav-link login-link">
             <a href="<?php echo BASE_URL . '/index.php'; ?>" class="btn"> logout</a>
