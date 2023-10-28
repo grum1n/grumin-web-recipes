@@ -2,7 +2,16 @@
 include('path.php'); 
 include(ROOT_PATH . "/app/controllers/recipes.php");
 
+$recipes = array();
 $page_title = 'HOME';
+
+if(isset($_GET['category_id'])) {
+    // dd($_GET);
+    $recipes = getRecipeByCategoryId($_GET['category_id']);
+    // $postsTitle = "You searched for posts under '" . $_GET['name'] . "'";
+} else {
+    $recipes = getPublishedRecipes();
+}
 
 ?>
 
@@ -13,58 +22,22 @@ $page_title = 'HOME';
 <main>
     <?php include(ROOT_PATH . '/views/includes/authorized/messages.php'); ?>
     <section class="recipes-container">
-        <aside>
-            <h4>recipes</h4>
-            <div class="tags-list">
-                <a href="tag-template.html">Beef (1)</a>
-                <a href="tag-template.html">Breakfast (2)</a>
-                <a href="tag-template.html">Carrots (3)</a>
-                <a href="tag-template.html">Food (4)</a>
-            </div>
-        </aside>
+        <?php include(ROOT_PATH . '/views/includes/public/sidebar.php'); ?>
 
         <div class="recipes-list">
-            
-            <a href="<?php echo BASE_URL . '/views/public/single.php'; ?>" class="recipe">
-                <img
-                src="<?php echo BASE_URL . '/assets/images/web/recipe-1.jpeg'; ?>"
-                class="img recipe-img"
-                alt=""
-                />
-                <h5>Carne Asada</h5>
-                <p>Prep : 15min | Cook : 5min</p>
-            </a>
-            
-            <a href="<?php echo BASE_URL . '/views/public/single.php'; ?>" class="recipe">
-                <img
-                src="<?php echo BASE_URL . '/assets/images/web/recipe-2.jpeg'; ?>"
-                class="img recipe-img"
-                alt=""
-                />
-                <h5>Greek Ribs</h5>
-                <p>Prep : 15min | Cook : 5min</p>
-            </a>
-            
-            <a href="<?php echo BASE_URL . '/views/public/single.php'; ?>" class="recipe">
-                <img
-                src="<?php echo BASE_URL . '/assets/images/web/recipe-3.jpeg'; ?>"
-                class="img recipe-img"
-                alt=""
-                />
-                <h5>Vegetable Soup</h5>
-                <p>Prep : 15min | Cook : 5min</p>
-            </a>
-            
-            <a href="<?php echo ROOT_PATH . '/views/public/single.php'; ?>" class="recipe">
-                <img
-                src="<?php echo BASE_URL . '/assets/images/web/recipe-3.jpeg'; ?>"
-                class="img recipe-img"
-                alt=""
-                />
-                <h5>Banana Pancakes</h5>
-                <p>Prep : 15min | Cook : 5min</p>
-            </a>
-            
+            <?php if (count($recipes) >= 1) : ?>
+                <?php foreach($recipes as $recipe) : ?>
+                    <a href="<?php echo BASE_URL . '/views/public/single.php?recipe_id='  . $recipe['id']; ?>" class="recipe">
+                        <img
+                        src="<?php echo BASE_URL . '/assets/images/uploads/' . $recipe['image']; ?>"
+                        class="img recipe-img"
+                        alt="<?php echo $recipe['title']; ?>"
+                        />
+                        <h5><?php echo $recipe['title']; ?></h5>
+                        <p>Prep : <?php echo $recipe['prep_time']; ?> | Cook : <?php echo $recipe['cook_time']; ?></p>
+                    </a>
+                <?php endforeach; ?>
+            <?php endif; ?>
         </div>
     </section>
 </main>

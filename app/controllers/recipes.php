@@ -18,8 +18,10 @@ $serving = '';
 $tags = '';
 $published = '';
 
+$recipe = array();
+
 $categories = selectAll('categories');
-$recipes = selectAll($table);
+// $recipes = selectAll($table);
 $persons = ['1 person', '2 persons', '4 persons', '6 persons', '8 persons'];
 
 if (isset($_GET['id'])) {
@@ -35,6 +37,10 @@ if (isset($_GET['id'])) {
     $serving = $recipe['serving'];
     $tags = $recipe['tags'];
     $published = $recipe['published'];
+}
+
+if(isset($_GET['recipe_id'])) {
+    $recipe = selectOne($table, ['id' => $_GET['recipe_id']]);
 }
 
 if(isset($_POST['add-recipe'])){

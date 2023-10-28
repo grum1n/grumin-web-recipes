@@ -24,7 +24,7 @@
             <div class="nav-links">
                 <a href="<?php echo BASE_URL . '/index.php'; ?>" class="nav-link"> home </a>
                 <a href="<?php echo BASE_URL . '/views/public/about.php'; ?>" class="nav-link"> about </a>
-                <a href="<?php echo BASE_URL . '/views/public/tags.php'; ?>" class="nav-link"> tags </a>
+                <a href="<?php echo BASE_URL . '/views/public/categories.php'; ?>" class="nav-link"> categories </a>
                 <a href="<?php echo BASE_URL . '/views/public/recipes.php'; ?>" class="nav-link"> recipes </a>
                 <a href="<?php echo BASE_URL . '/views/public/contact.php'; ?>" class="nav-link"> contact </a>
 

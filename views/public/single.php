@@ -1,7 +1,9 @@
 <?php 
     include('../../path.php'); 
-
+    include(ROOT_PATH . "/app/controllers/recipes.php");
+    
     $page_title = 'SINGLE';
+    $tags = explode(',', $recipe['tags']);
 ?>
 
 <?php include(ROOT_PATH . '/views/includes/public/header.php'); ?>
@@ -9,43 +11,36 @@
 <main>
     <section class="recipe-hero">
         <img
-        src="<?php echo BASE_URL . '/assets/images/web/recipe-4.jpeg'; ?>"
+        src="<?php echo BASE_URL . '/assets/images/uploads/' . $recipe['image']; ?>"
         class="img recipe-hero-img"
         />
         <article class="recipe-info">
-        <h2>Banana Pancakes</h2>
+        <h2><?php echo $recipe['title']; ?></h2>
         <p>
-            Shabby chic humblebrag banh mi bushwick, banjo kale chips
-            meggings. Cred selfies sartorial, cloud bread disrupt blue bottle
-            seitan. Dreamcatcher tousled bitters, health goth vegan venmo
-            whatever street art lyft shabby chic pitchfork beard. Drinking
-            vinegar poke tbh, iPhone coloring book polaroid truffaut tousled
-            ramps pug trust fund letterpress. Portland four loko austin
-            chicharrones bitters single-origin coffee. Leggings letterpress
-            occupy pour-over.
+            <?php echo $recipe['description']; ?>
         </p>
         <div class="recipe-icons">
             <article>
             <i class="fas fa-clock"></i>
             <h5>prep time</h5>
-            <p>30 min.</p>
+            <p><?php echo $recipe['prep_time']; ?></p>
             </article>
             <article>
             <i class="far fa-clock"></i>
             <h5>cook time</h5>
-            <p>15 min.</p>
+            <p><?php echo $recipe['cook_time']; ?></p>
             </article>
             <article>
             <i class="fas fa-user-friends"></i>
             <h5>serving</h5>
-            <p>6 servings</p>
+            <p><?php echo $recipe['serving']; ?></p>
             </article>
         </div>
         <p class="recipe-tags">
-            Tags : <a href="tag-template.html">beef</a>
-            <a href="tag-template.html">breakfast</a>
-            <a href="tag-template.html">pancakes</a>
-            <a href="tag-template.html">food</a>
+            Tags :
+            <?php foreach($tags as $tag): ?>
+                <a href="#"><?= $tag ?></a>
+            <?php endforeach; ?>
         </p>
         </article>
     </section>

@@ -22,6 +22,28 @@ function executeQuery($sql, $data)
     return $stmt;
 }
 
+
+function getPublishedRecipes()
+{
+    global $conn;
+    //SELECT * FROM recipes WHERE published=1
+    $sql = "SELECT r.*, u.username FROM recipes AS r JOIN users AS u ON r.user_id=u.id WHERE r.published=?";
+    $stmt = executeQuery($sql, ['published' => 1]);
+    $records = $stmt->get_result()->fetch_all(MYSQLI_ASSOC); //fetch all
+    return $records;
+}
+
+
+function getRecipeByCategoryId($category_id)
+{
+    global $conn;
+
+    $sql = "SELECT r.*, u.username FROM recipes AS r JOIN users AS u ON r.user_id=u.id WHERE r.published=? AND category_id=?";
+    $stmt = executeQuery($sql, ['published' => 1, 'category_id' => $category_id]);
+    $records = $stmt->get_result()->fetch_all(MYSQLI_ASSOC); //fetch all
+    return $records;
+}
+
 function selectAll($table, $conditions = [])
 {
     global $conn;
@@ -129,4 +151,21 @@ function delete($table, $id)
 
     $stmt = executeQuery($sql, ['id' => $id]);
     return $stmt->affected_rows;
+}
+
+function searchRecipes($term)
+{
+    $match = '%' . $term . '%';
+    global $conn;
+    $sql = "SELECT 
+            r.*, u.username 
+            FROM recipes AS r 
+            JOIN users AS u 
+            ON r.user_id=u.id 
+            WHERE r.published=?
+            AND r.title LIKE ? OR r.description LIKE ?";
+
+    $stmt = executeQuery($sql, ['published' => 1, 'title' => $match, 'description' => $match]);
+    $records = $stmt->get_result()->fetch_all(MYSQLI_ASSOC); //fetch all
+    return $records;
 }
