@@ -8,11 +8,8 @@
     $recipesTitle = '';
 
     if(isset($_GET['category_id'])) {
-        // dd($_GET);
         $recipes = getRecipeByCategoryId($_GET['category_id']);
-        // $postsTitle = "You searched for posts under '" . $_GET['name'] . "'";
     } else if(isset($_POST['search-term'])) {
-        // dd($_POST);
         $recipes = searchRecipes($_POST['search-term']);
         $recipesTitle = "You searched for '" . $_POST['search-term'] . "'";
     } else {
@@ -30,12 +27,7 @@
 <p><?php echo $recipesTitle; ?></p>
 <main>
     <section class="recipes-container">
-        
-
         <?php include(ROOT_PATH . '/views/includes/public/sidebar.php'); ?>
-
-       
-
         <div class="recipes-list">
             <?php if (count($recipes) >= 1) : ?>
                 <?php foreach($recipes as $recipe) : ?>
@@ -53,6 +45,5 @@
         </div>
     </section>
 </main>
-    
     
 <?php include(ROOT_PATH . '/views/includes/public/footer.php'); ?>

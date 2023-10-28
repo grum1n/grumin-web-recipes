@@ -21,7 +21,6 @@ $published = '';
 $recipe = array();
 
 $categories = selectAll('categories');
-// $recipes = selectAll($table);
 $persons = ['1 person', '2 persons', '4 persons', '6 persons', '8 persons'];
 
 if (isset($_GET['id'])) {
@@ -109,7 +108,7 @@ if(isset($_POST['update-recipe'])){
         }
     }
     // else {
-    //     array_push($errors, 'Post image required');
+    //     array_push($errors, 'Resipe image required');
     // }
 
     if(count($errors) == 0){

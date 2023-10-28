@@ -277,7 +277,7 @@ main {
 }
 main {
     padding-top: 2rem;
-    min-height: calc(100vh - (6rem + 4rem));
+    min-height: calc(100vh - (rem + 4rem));
 }
 
 section.hero {

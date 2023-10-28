@@ -32,9 +32,9 @@
                     <div class="nav-link login-link">
                         <?php echo $_SESSION['username']; ?>
                         <?php if ($_SESSION['admin']) : ?>
-                            <li><a href="<?php echo BASE_URL . '/views/authorized/dashboard.php' ?>">Dashboard</a></li>
+                            <a href="<?php echo BASE_URL . '/views/authorized/dashboard.php' ?>"><i class="fa-solid fa-table-list"></i></a>
                         <?php endif; ?>
-                        <a href="<?php echo BASE_URL . '/logout.php' ?>" class="logout">logout</a>
+                        <a href="<?php echo BASE_URL . '/logout.php' ?>" class="logout"><i class="fa-solid fa-right-from-bracket"></i></a>
                     </div>
                     <?php else : ?>
                     <div class="nav-link login-link">

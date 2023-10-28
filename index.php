@@ -6,9 +6,7 @@ $recipes = array();
 $page_title = 'HOME';
 
 if(isset($_GET['category_id'])) {
-    // dd($_GET);
     $recipes = getRecipeByCategoryId($_GET['category_id']);
-    // $postsTitle = "You searched for posts under '" . $_GET['name'] . "'";
 } else {
     $recipes = getPublishedRecipes();
 }
