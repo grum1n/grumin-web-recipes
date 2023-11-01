@@ -10,13 +10,13 @@ $page_title = 'Categories | DASHBOARD';
 
     <div class="dashboard-content">
         <?php include(ROOT_PATH . '/views/includes/authorized/messages.php'); ?>
-        <br />
-        <a href="<?php echo BASE_URL . '/views/authorized/categories/create.php'; ?>">add new</a>
-        </br>
-        <table>
+        <div class="top-button-add-new">
+            <a href="<?php echo BASE_URL . '/views/authorized/categories/create.php'; ?>" title="add new"><i class="fa-regular fa-square-plus"></i></a>
+        </div>
+        <table class="admin-categories">
             <thead>
                 <th>id</th>
-                <th>Name</th>
+                <th>Categories</th>
                 <th colspan="2">Action</th>
             </thead>
             <tbody>
@@ -26,13 +26,11 @@ $page_title = 'Categories | DASHBOARD';
                         <tr class="rec">
                             <td><?php echo $category['id']; ?>. </td>
                             <td><?php echo $category['name']; ?></td>
-                            <td>
-                                <a href="edit.php?id=<?php echo $category['id']; ?>" class="btn alert-success">
+                            <td class="action-buttons">
+                                <a href="edit.php?id=<?php echo $category['id']; ?>" class="action-btn edit">
                                     Edit
                                 </a>
-                            </td>
-                            <td>
-                                <a href="index.php?del_id=<?php echo $category['id']; ?>" class="btn alert-danger" onclick="return confirm('Are you sure to delete this category?')">
+                                <a href="index.php?del_id=<?php echo $category['id']; ?>" class="action-btn delete" onclick="return confirm('Are you sure to delete this category?')">
                                     Delete
                                 </a>
                             </td>

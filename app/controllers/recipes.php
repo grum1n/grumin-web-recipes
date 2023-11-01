@@ -21,6 +21,7 @@ $published = '';
 $recipe = array();
 
 $categories = selectAll('categories');
+$recipes = selectAll('recipes');
 $persons = ['1 person', '2 persons', '4 persons', '6 persons', '8 persons'];
 
 if (isset($_GET['id'])) {

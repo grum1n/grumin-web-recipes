@@ -10,8 +10,7 @@
 </head>
 
 <body>
-
-    <header class="dashboard-header">
+    <header class="admin-header">
         <nav>
             <div class="header-nav">
                 <a href="<?php echo BASE_URL . '/views/authorized/dashboard.php'; ?>" class="nav-logo">
@@ -23,13 +22,13 @@
             </div>
             <?php if (isset($_SESSION['username'])) : ?>
                 <div class="nav-links">
-                    <a href="<?php echo BASE_URL . '/index.php'; ?>" class="nav-link"> home </a>
                     <a href="<?php echo BASE_URL . '/views/authorized/categories/index.php'; ?>" class="nav-link"> categories </a>
                     <a href="<?php echo BASE_URL . '/views/authorized/recipes/index.php'; ?>" class="nav-link"> recipes </a>
+                    <a href="<?php echo BASE_URL . '/index.php'; ?>" class="nav-link" target="_blank"> frontend </a>
 
-                    <span class="alert-success"> <?php echo $_SESSION['username']; ?></span>
-
+                    
                     <div class="nav-link login-link">
+                        <span class="user-name"> <?php echo $_SESSION['username']; ?></span>
                         <a href="<?php echo BASE_URL . '/logout.php'; ?>" class="btn"> logout</a>
                     </div>
                 </div>
@@ -38,5 +37,4 @@
     </header>
 
     <main>
-        <section class="recipes-container">
-            <?php include(ROOT_PATH . '/views/includes/authorized/sidebar.php'); ?>
+        <section class="admin-content-container">

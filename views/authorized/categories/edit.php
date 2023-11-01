@@ -8,11 +8,14 @@ $page_title = 'Categories - Edit | DASHBOARD';
 
 <?php include(ROOT_PATH . '/views/includes/authorized/header.php'); ?>
     <div class="dashboard-content">
-        <a href="<?php echo BASE_URL . '/views/authorized/categories/index.php'; ?>">back</a>
-        </br>
-        <?php include(ROOT_PATH . '/app/helpers/formErrors.php') ?>
+        <div class="top-button-back">
+            <a href="<?php echo BASE_URL . '/views/authorized/categories/index.php'; ?>">
+                <i class="fa-solid fa-arrow-left-long"></i>
+            </a>
+        </div>
         
         <form action="edit.php" method="POST" class="form contact-form">
+            <?php include(ROOT_PATH . '/app/helpers/formErrors.php') ?>
             <input type="hidden" name="id" value="<?php echo $id; ?>">
             <div class="form-row">
                 <label html="name" class="form-label">Category Name</label>

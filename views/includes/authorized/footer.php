@@ -1,8 +1,8 @@
 
 </section>
 </main>
-<footer class="page-footer">
-    footer
+<footer class="admin-page-footer">
+    &copy; <?php echo date('Y'); ?>
 </footer>
 
 <script src="<?php echo BASE_URL . '/assets/js/custom.js'; ?>"></script>

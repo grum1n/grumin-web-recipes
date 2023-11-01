@@ -19,13 +19,13 @@
 
 <?php include(ROOT_PATH . '/views/includes/public/header.php'); ?>
 
-<div class="" style="margin:20px auto;width:300px;">
-    <form action="recipes.php" method="post">
-        <input type="text" name="search-term" class="" placeholder="Search..." style="width:300px;">
-    </form>
-</div>
-<p><?php echo $recipesTitle; ?></p>
 <main>
+    <div class="recipes-search">
+        <form action="recipes.php" method="post">
+            <input type="text" name="search-term" class="" placeholder="Search..."">
+        </form>
+        <p><?php echo $recipesTitle; ?></p>
+    </div>
     <section class="recipes-container">
         <?php include(ROOT_PATH . '/views/includes/public/sidebar.php'); ?>
         <div class="recipes-list">

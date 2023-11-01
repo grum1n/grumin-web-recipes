@@ -194,7 +194,7 @@ header nav a .nav-logo {
 }
 
 .nav-btn {
-    padding: 0.15rem 0.25rem;
+    padding: 0.17rem 0.27rem;
 }
 
 .nav-btn i {
@@ -212,7 +212,7 @@ header nav a .nav-logo {
 header nav .nav-link {
     display: block;
     text-align: center;
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     text-transform: capitalize;
     color: var(--grey-900);
     letter-spacing: var(--letterSpacing);
@@ -307,6 +307,31 @@ section.hero {
     display: grid;
     gap: 2rem 1rem;
 }
+
+main .recipes-search {
+  margin: 0 auto;
+  width: 300px;
+}
+
+main .recipes-search form{
+  width: 100%;
+}
+
+main .recipes-search form input{
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  border-radius: var(--borderRadius);
+  background: var(--backgroundColor);
+  border: 1px solid var(--grey-500);
+
+}
+
+main .recipes-search p{
+  margin: 1rem auto 2rem;
+  width: 100%;
+  text-align: center;
+}
+
 aside {
     order: 1;
     display: flex;
@@ -439,7 +464,7 @@ aside h4 {
 main section.tags-wrapper {
     display: grid;
     gap: 2rem;
-    padding-bottom: 3rem;
+    padding-bottom: 14rem;
 }
 main section .tag {
     background: var(--grey-500);
@@ -759,16 +784,6 @@ footer a {
 
 }
 
-/* ADMIN */
-
-header.dashboard-header{
-    background-color: var(--primary-200);
-}
-
-main .recipes-container .dashboard-content {
-    background-color: var(--primary-100);
-}
-
 /* alerts */
 .alert {
     padding: 0.375rem 0.75rem;
@@ -785,6 +800,170 @@ main .recipes-container .dashboard-content {
     color: var(--green-dark);
     background: var(--green-light);
 }
+
+/* ADMIN */
+
+header.admin-header{
+  background-color: var(--primary-100);
+}
+footer.admin-page-footer{
+  background-color: var(--primary-900);
+}
+.admin-content-container {
+  background-color: var(--primary-100);
+  min-height: 600px;
+  margin-bottom: 2rem;
+}
+.admin-content-container .dashboard-content{
+  padding: 1rem;
+}
+.dashboard-content .top-button-add-new{
+  width: 100;
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 1rem;
+}
+.dashboard-content .top-button-add-new a{
+  height: 30px;
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: var(--white);
+  background: var(--primary-500);
+  border: transparent;
+  font-size: 1.5rem;
+  border-radius: var(--borderRadius);
+  box-shadow: var(--shadow-1);
+}
+.dashboard-content .top-button-add-new a:hover{
+  background: var(--primary-600);
+}
+.dashboard-content .top-button-back{
+  width: 100;
+  display: flex;
+  justify-content: flex-start;
+  padding-bottom: 1rem;
+}
+.dashboard-content .top-button-back a{
+  height: 30px;
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: var(--white);
+  background: var(--grey-700);
+  border: transparent;
+  font-size: 1.5rem;
+  border-radius: var(--borderRadius);
+  box-shadow: var(--shadow-1);
+}
+.dashboard-content .top-button-back a:hover{
+  background: var(--grey-800);
+}
+.dashboard-content .admin-categories th{
+  background: var(--grey-300);
+}
+.dashboard-content .admin-categories th:first-child{
+  width: 2rem;
+  padding: 0 0.5rem;
+}
+.dashboard-content .admin-categories th:nth-child(2){
+  width: 100%;
+  text-align: left;
+  padding: 1rem;
+}
+.dashboard-content .admin-categories td{
+ border-bottom: 2px solid var(--grey-300);
+}
+.dashboard-content .admin-categories td:first-child{
+  width: 3rem;
+}
+.dashboard-content .admin-categories td:nth-child(2){
+  width: 100%;
+  text-align: left;
+  padding: 1rem;
+}
+.admin-categories .action-buttons{
+  padding: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+.admin-categories .action-buttons .action-btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: transparent;
+  padding: 3px 6px;
+  font-size: 1rem;
+  border-radius: var(--borderRadius);
+  box-shadow: var(--shadow-1);
+}
+.admin-categories .action-buttons .edit{
+  color: var(--green-dark);
+  background-color: var(--green-light);
+}
+.admin-categories .action-buttons .edit:hover{
+  color: var(--green-light);
+  background-color: var(--green-dark);
+}
+.admin-categories .action-buttons .delete{
+  color: var(--red-dark);
+  background-color: var(--red-light);
+}
+.admin-categories .action-buttons .delete:hover{
+  color: var(--red-light);
+  background-color: var(--red-dark);
+}
+
+/* admin form */
+.dashboard-content form {
+  width: 300px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border: 1px solid var(--grey-700);
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.dashboard-content form input, .dashboard-content form textarea {
+  padding: 3px;
+  border-radius: 3px;
+  width: 100%;
+}
+.dashboard-content form textarea {
+  height: 100px;
+}
+.dashboard-content form button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: transparent;
+  padding: 3px 6px;
+  font-size: 1rem;
+  border-radius: var(--borderRadius);
+  box-shadow: var(--shadow-1);
+  background-color: var(--primary-500);
+  color: var(--white);
+  font-size: 1.25rem;
+  letter-spacing: var(--letterSpacing);
+
+}
+
+
+
+
+
+
+
+
+
 
 
 
